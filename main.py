@@ -19,9 +19,12 @@ async def start_buyrugini_ushlash(message: Message) -> None:
 @x.message(F.text.lower() == f"haqida")
 async def Bot_haqida(message: Message):
     await message.reply(f"BU bot Shaxriyor Karimberdiyev tomonidan ochilgan. ochilish sanasi: 14.08.2025")
+    
 @x.message(F.photo)
-async def photo(message: Message):
-    await message.answer(f"Foro ID si: {message.photo[-1].file_id}")
+async def qaytar_rasm(message: Message):
+    file_id = message.photo[-1].file_id
+    await message.answer_photo(file_id, caption=f"file_id yordamida olingan sen yuborgan rasm, Foto ID si: {file_id}")
+    
 @x.message()
 async def replying_answer(message: Message) -> None:
     await message.send_copy(chat_id=message.chat.id)
